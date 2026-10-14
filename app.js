@@ -2,7 +2,7 @@
 // Configurá SUPABASE_URL y SUPABASE_ANON_KEY en este archivo después de crear el proyecto.
 const SUPABASE_URL = "https://oohbozrjnbjzywsfnxmd.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_bWcqtjxLHCT7aNOnkI3Eyg_zqCe1UpM";
-const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("PEGAR_AQUI") && !SUPABASE_ANON_KEY.includes("PEGAR_AQUI");
+const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("https://oohbozrjnbjzywsfnxmd.supabase.co";") && !SUPABASE_ANON_KEY.includes("sb_publishable_bWcqtjxLHCT7aNOnkI3Eyg_zqCe1UpM");
 const $ = (s) => document.querySelector(s);
 let db = null, currentUser = null, currentPage = "dashboard", modalSaveHandler = null;
 let cache = {products:[], customers:[], orders:[], payments:[]};

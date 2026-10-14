@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7b4968">
+  <title>AlDa Belleza Gestión</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div id="setupNotice" class="notice hidden"></div>
+  <section id="authView" class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand-mark">AB</div>
+      <p class="eyebrow">GESTIÓN COMERCIAL</p>
+      <h1>AlDa Belleza</h1>
+      <p class="muted">Ventas, pedidos, stock y cuentas claras.</p>
+      <form id="loginForm">
+        <label>Correo electrónico<input id="email" type="email" autocomplete="username" required placeholder="tu@email.com"></label>
+        <label>Contraseña<input id="password" type="password" autocomplete="current-password" required placeholder="Tu contraseña"></label>
+        <button class="primary full" type="submit">Iniciar sesión</button>
+        <p id="authMessage" class="form-message"></p>
+      </form>
+      <p class="tiny muted">El acceso lo administra el propietario. No compartas tu contraseña.</p>
+    </div>
+  </section>
+
+  <div id="appView" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand-row"><div class="brand-mark small">AB</div><div><strong>AlDa Belleza</strong><small>Gestión</small></div></div>
+      <nav id="nav">
+        <button class="nav-item active" data-page="dashboard">▦ <span>Resumen</span></button>
+        <button class="nav-item" data-page="orders">▤ <span>Ventas y pedidos</span></button>
+        <button class="nav-item" data-page="products">◇ <span>Productos y stock</span></button>
+        <button class="nav-item" data-page="customers">♙ <span>Clientes</span></button>
+        <button class="nav-item" data-page="payments">＄ <span>Pagos y deudas</span></button>
+      </nav>
+      <div class="sidebar-bottom"><span id="userEmail" class="tiny"></span><button id="logoutBtn" class="text-button">Cerrar sesión</button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">PANEL DE CONTROL</p><h2 id="pageTitle">Resumen</h2></div><button id="refreshBtn" class="secondary">↻ Actualizar</button></header>
+      <div id="pageContent"></div>
+    </main>
+  </div>
+
+  <dialog id="modal">
+    <form method="dialog" id="modalForm">
+      <div class="modal-head"><h3 id="modalTitle">Nuevo registro</h3><button class="icon-button" value="cancel" aria-label="Cerrar">×</button></div>
+      <div id="modalBody"></div>
+      <div class="modal-actions"><button class="secondary" value="cancel">Cancelar</button><button id="modalSave" class="primary" type="submit" value="save">Guardar</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>

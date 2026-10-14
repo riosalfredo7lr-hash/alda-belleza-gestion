@@ -1,0 +1,57 @@
+ALDA BELLEZA GESTIÓN — PRIMERA VERSIÓN
+======================================
+
+QUÉ INCLUYE
+- Interfaz adaptable a celulares y computadoras.
+- Inicio de sesión con Supabase Auth.
+- Catálogo de productos Avon/Natura: costo, precio, stock y mínimo.
+- Agenda de clientes con WhatsApp e Instagram.
+- Registro de ventas/encargos y origen del pedido.
+- Registro de pagos parciales, saldo pendiente y resumen básico.
+- Datos compartidos en internet cuando la app está conectada al mismo proyecto Supabase.
+
+IMPORTANTE
+Esta es una primera versión funcional de la interfaz, no un sistema ya publicado.
+Para que guarde datos y se sincronice, hay que crear y configurar Supabase y alojar los archivos.
+El panel de resumen actualiza datos al iniciar sesión o tocar “Actualizar”.
+Todavía NO descuenta automáticamente productos vendidos del stock, no tiene detalle por renglón de productos dentro de una venta, ni módulo de gastos terminado. Esas son las próximas etapas antes de usarlo para llevar la contabilidad real.
+
+PASO 1 — CREAR LA BASE DE DATOS
+1. Entrá a https://supabase.com/ y creá un proyecto.
+2. Elegí una contraseña fuerte para la base de datos y guardala en un lugar seguro.
+3. Abrí SQL Editor.
+4. Copiá y ejecutá todo el contenido de supabase_schema.sql.
+
+PASO 2 — CREAR LOS DOS USUARIOS
+1. En Supabase, abrí Authentication > Users.
+2. Creá los dos usuarios con sus correos y contraseñas.
+3. En Authentication > Settings, desactivá el registro público (sign-ups), si aparece habilitado.
+4. No compartan las contraseñas entre sí.
+
+PASO 3 — CONECTAR LA APLICACIÓN
+1. En Supabase, abrí Project Settings > API (o Connect).
+2. Copiá Project URL y la clave pública publishable/anon (NO la service_role).
+3. Abrí app.js con un editor de texto.
+4. Reemplazá:
+   https://PEGAR_AQUI_URL_DE_SUPABASE
+   PEGAR_AQUI_CLAVE_PUBLICA_ANON
+   por los valores reales. No publiques la clave service_role en el navegador.
+
+PASO 4 — PUBLICAR LA WEB
+Subí index.html, styles.css y app.js a un hosting de páginas estáticas, por ejemplo Netlify, Cloudflare Pages o Vercel.
+El archivo SQL y este LEEME no necesitan quedar públicos en el sitio.
+La URL del sitio será la que abran ambos usuarios desde sus celulares.
+
+SEGURIDAD Y ALCANCE
+- La clave pública de Supabase está diseñada para uso en navegador; la seguridad depende de Row Level Security (RLS).
+- El SQL inicial permite que todo usuario autenticado acceda a los registros. Por eso, desactivá los registros públicos y creá solamente a las dos personas autorizadas.
+- No cargues datos reales hasta haber probado inicio de sesión, permisos, altas y pagos.
+- Hacé copias de seguridad periódicas desde Supabase.
+
+PRÓXIMAS MEJORAS RECOMENDADAS
+1. Detalle de productos por venta y descuento automático de stock.
+2. Estados de pedido más completos: encargado, recibido, reservado, listo, entregado/cancelado.
+3. Registro de gastos y compras a proveedores.
+4. Cálculo de ganancia real: venta menos costo de los productos vendidos y gastos.
+5. Informes por período y exportación a Excel/PDF.
+6. Roles de usuario y auditoría de quién modificó cada registro.

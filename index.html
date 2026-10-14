@@ -47,9 +47,16 @@
 
   <dialog id="modal">
     <form method="dialog" id="modalForm">
-      <div class="modal-head"><h3 id="modalTitle">Nuevo registro</h3><button class="icon-button" value="cancel" aria-label="Cerrar">×</button></div>
-      <div id="modalBody"></div>
-      <div class="modal-actions"><button class="secondary" value="cancel">Cancelar</button><button id="modalSave" class="primary" type="submit" value="save">Guardar</button></div>
+      
+<div class="modal-head">
+  <h3 id="modalTitle">Nuevo registro</h3>
+  <button type="button" class="icon-button" id="modalClose" aria-label="Cerrar">×</button>
+</div>
+<div id="modalBody"></div>
+<div class="modal-actions">
+  <button type="button" class="secondary" id="modalCancel">Cancelar</button>
+  <button id="modalSave" class="primary" type="submit" value="save">Guardar</button>
+</div>
     </form>
   </dialog>
   <div id="toast" class="toast hidden"></div>

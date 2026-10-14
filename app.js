@@ -89,6 +89,10 @@ function openModal(title,body,onSave){
   $("#modalTitle").textContent=title;$("#modalBody").innerHTML=body;modalSaveHandler=onSave;$("#modal").showModal();
 }
 $("#modalForm").addEventListener("submit",async e=>{if(e.submitter?.value!=="save")return;e.preventDefault();if(!modalSaveHandler)return;const btn=$("#modalSave");btn.disabled=true;try{await modalSaveHandler(new FormData($("#modalForm")));$("#modal").close();await loadAll();toast("Registro guardado")}catch(err){toast(err.message||"No se pudo guardar")}finally{btn.disabled=false}});
+
+$("#modalCancel").addEventListener("click",()=>$("#modal").close());
+$("#modalClose").addEventListener("click",()=>$("#modal").close());
+
 function val(fd,k){return String(fd.get(k)||"").trim()}
 function nval(fd,k){return Number(fd.get(k)||0)}
 async function saveRow(table,data,id){let q=id?db.from(table).update(data).eq("id",id):db.from(table).insert(data);const {error}=await q;if(error)throw error}
